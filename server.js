@@ -35,6 +35,7 @@ app.use("/api/places", placeRoutes);
 app.use("/api/place", placesRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/routes", routeRoutes);
+app.use("/api/taxonomy", require("./routes/taxonomy"));
 
 
 
