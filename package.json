@@ -5,18 +5,22 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:dev": "env-cmd -f .env.development nodemon server.js",
+    "start:prod": "env-cmd -f .env.production node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
+    "env-cmd": "^11.0.0",
     "express": "^5.1.0",
     "google-auth-library": "^10.2.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.17.1",
+    "multer": "^2.0.2",
     "nodemon": "^3.1.10"
   }
 }

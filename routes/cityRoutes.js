@@ -4,8 +4,20 @@ const City = require("../models/City");
 
 // ✅ Create City
 router.post("/", async (req, res) => {
+  console.log('BODY:', req.body);
   try {
-    let city = new City(req.body);
+    const { name, countryId, stateId, cityImage } = req.body;
+    let trendingSequence = req.body.trendingSequence;
+    if (trendingSequence !== undefined) trendingSequence = Number(trendingSequence);
+    let city = new City({
+      name,
+      countryId,
+      stateId,
+      trendingSequence,
+      cityImage
+    });
+
+    console.log('NEW CITY:', city);
     await city.save();
     city = await City.findById(city._id)
       .populate("countryId")

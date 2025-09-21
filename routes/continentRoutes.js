@@ -4,6 +4,7 @@ const Continent = require("../models/Continent");
 
 // ✅ Create Continent
 router.post("/", async (req, res) => {
+  console.log('BODY:', req.body);
   try {
     const continent = new Continent(req.body);
     await continent.save();

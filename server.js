@@ -20,7 +20,7 @@ const app = express();
 
 // ✅ Middleware
 app.use(cors()); // For dev, allow all. In prod, restrict by origin
-app.use(express.json());
+app.use(express.json()); // Parse JSON bodies for all routes
 
 // ✅ Connect DB
 connectDB();
@@ -30,14 +30,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/continents", continentRoutes);
 app.use("/api/countries", countryRoutes);
 app.use("/api/states", stateRoutes);
-app.use("/api/cities", cityRoutes);
+app.use("/api/cities", cityRoutes); // city image is now a string, no upload
 app.use("/api/places", placeRoutes);
 app.use("/api/place", placesRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/routes", routeRoutes);
 app.use("/api/taxonomy", require("./routes/taxonomy"));
-
-
 
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
