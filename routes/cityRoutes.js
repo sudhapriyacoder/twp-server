@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const cities = await City.find()
-      .populate("countryId")
+      .populate({ path: "countryId", populate: { path: "continentId" } })
       .populate("stateId");
     res.json(cities);
   } catch (err) {
