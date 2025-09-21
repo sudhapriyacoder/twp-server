@@ -6,7 +6,7 @@ const City = require("../models/City");
 router.post("/", async (req, res) => {
   console.log('BODY:', req.body);
   try {
-    const { name, countryId, stateId, cityImage } = req.body;
+    const { name, countryId, stateId, cityImage, beachImageUrl, templeImageUrl, monumentImageUrl, museumImageUrl, parkImageUrl } = req.body;
     let trendingSequence = req.body.trendingSequence;
     if (trendingSequence !== undefined) trendingSequence = Number(trendingSequence);
     let city = new City({
@@ -14,7 +14,12 @@ router.post("/", async (req, res) => {
       countryId,
       stateId,
       trendingSequence,
-      cityImage
+      cityImage,
+      beachImageUrl,
+      templeImageUrl,
+      monumentImageUrl,
+      museumImageUrl,
+      parkImageUrl
     });
 
     console.log('NEW CITY:', city);

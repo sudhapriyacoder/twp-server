@@ -5,6 +5,11 @@ const citySchema = new mongoose.Schema({
   countryId: { type: mongoose.Schema.Types.ObjectId, ref: "Country", required: true },
   stateId: { type: mongoose.Schema.Types.ObjectId, ref: "State", required: false }, // 👈 make optional
   cityImage: { type: String },
+  beachImageUrl: { type: String },
+  templeImageUrl: { type: String },
+  monumentImageUrl: { type: String },
+  museumImageUrl: { type: String },
+  parkImageUrl: { type: String },
   trendingSequence: { type: Number },
 });
 
