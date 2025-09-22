@@ -3,6 +3,7 @@ const router = express.Router();
 const State = require("../models/State");
 
 // ✅ Create State
+// Accepts: name, countryId, trendingSequence (optional), imageUrl (optional)
 router.post("/", async (req, res) => {
   try {
     let state = new State(req.body);
@@ -35,6 +36,7 @@ router.get("/byCountry/:countryId", async (req, res) => {
 });
 
 // ✅ Update State
+// Accepts: name, countryId, trendingSequence (optional), imageUrl (optional)
 router.put("/:id", async (req, res) => {
   try {
     let state = await State.findByIdAndUpdate(req.params.id, req.body, { new: true });

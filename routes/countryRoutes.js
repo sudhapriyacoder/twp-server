@@ -3,9 +3,11 @@ const router = express.Router();
 const Country = require("../models/Country");
 
 // ✅ Create Country
+// Accepts: name, continentId, trendingSequence (optional), imageUrl (optional)
 router.post("/", async (req, res) => {
   try {
     const country = new Country(req.body);
+    console.log('NEW COUNTRY:', country);
     await country.save();
 
     // Populate continent before sending back
@@ -49,6 +51,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // ✅ Update Country
+// Accepts: name, continentId, trendingSequence (optional), imageUrl (optional)
 router.put("/:id", async (req, res) => {
   try {
     const country = await Country.findByIdAndUpdate(

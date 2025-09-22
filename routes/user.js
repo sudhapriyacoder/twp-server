@@ -34,7 +34,7 @@ router.get("/me", authMiddleware, async (req, res) => {
 
 // POST toggle favorite
 // POST toggle favorite
-router.post("/favorites", authMiddleware, async (req, res) => {
+router.post("/favorites", async (req, res) => {
   try {
     const { placeId } = req.body;
     const user = await User.findById(req.user.id);
@@ -56,7 +56,7 @@ router.post("/favorites", authMiddleware, async (req, res) => {
   }
 });
 
-router.get("/favorites", authMiddleware, async (req, res) => {
+router.get("/favorites", async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate("favorites");
     res.json(user.favorites);

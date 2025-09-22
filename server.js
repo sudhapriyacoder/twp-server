@@ -15,6 +15,7 @@ const placeRoutes = require("./routes/placeRoutes");
 const placesRoutes = require("./routes/places");
 const userRoutes = require("./routes/user");
 const routeRoutes = require("./routes/routeRoutes");
+const homeRoutes = require("./routes/homeCarouselRoutes");
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.use("/api/places", placeRoutes);
 app.use("/api/place", placesRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/routes", routeRoutes);
+app.use("/api/routes", routeRoutes);
+app.use("/api/home", homeRoutes);
 app.use("/api/taxonomy", require("./routes/taxonomy"));
 
 
