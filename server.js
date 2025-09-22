@@ -57,6 +57,17 @@ app.use("/api/routes", routeRoutes);
 app.use("/api/home", homeCarouselRoutes);
 app.use("/api/taxonomy", require("./routes/taxonomy"));
 
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Catch-all: send index.html for non-API routes
+app.get('*', (req, res) => {
+  // Only serve index.html for non-API requests
+  if (!req.path.startsWith('/api/')) {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  }
+});
+
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
